@@ -47,13 +47,6 @@ class EcuacionSegundoGrado:
         if d >= 0:
             r1 = (-self.b + math.sqrt(d)) / (2 * self.a)
             r2 = (-self.b - math.sqrt(d)) / (2 * self.a)
-            return r1, r2
-
-    def solucionESG(self):
-        d = math.pow(self.b, 2) - 4 * self.a * self.c
-        if d >= 0:
-            r1 = (-self.b + math.sqrt(d)) / (2 * self.a)
-            r2 = (-self.b - math.sqrt(d)) / (2 * self.a)
         else:
             parteReal = -self.b / (2 * self.a)
             parteImaginaria = math.sqrt(math.fabs(d)) / (2 * self.a)
