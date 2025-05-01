@@ -89,3 +89,18 @@ class TestEcuacionSegundoGrado(unittest.TestCase):
             self.assertAlmostEqual(raiz_esperada1.imag, raiz_actual1.imag, 2)
             self.assertAlmostEqual(raiz_esperada2.real, raiz_actual2.real, 2)
             self.assertAlmostEqual(raiz_esperada2.imag, raiz_actual2.imag, 2)
+
+    def test_solucionESG_parametrosNoNumericos_lanzaException_subTest(self):
+        ecuacionSegundoGrado = EcuacionSegundoGrado()
+        items = (
+                {"Case": "Caso 01", "a": "a", "b": "b", "c": "c"},
+                {"Case": "Caso 02", "a": "a", "b": 1, "c": 1},
+                {"Case": "Caso 03", "a": 1, "b": "aa", "c": 1},
+                {"Case": "Caso 03", "a": 1, "b": "3,1", "c": 1},
+        )
+        for item in items:
+            with self.subTest(item["Case"]):
+                with self.assertRaises(ValueError):
+                    ecuacionSegundoGrado.a = item["a"]
+                    ecuacionSegundoGrado.b = item["b"]
+                    ecuacionSegundoGrado.c = item["c"]
